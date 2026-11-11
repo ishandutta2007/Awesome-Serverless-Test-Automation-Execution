@@ -1,5 +1,3 @@
-# Awesome-Serverless-Test-Automation-Execution
-
 # Awesome Serverless Test Automation Execution
 
 > A curated list of top Serverless Test Automation Execution platforms — both SaaS/Hosted commercial solutions and open-source alternatives for testing serverless functions, edge runtimes, and event-driven architectures.
@@ -10,8 +8,8 @@
 ## 📋 Table of Contents
 
 - [SaaS / Hosted Platforms](#-saas--hosted-platforms)
-  - [BrowserStack Test Companion Cloud](#browserstack-test-companion-cloud)
   - [Datadog Serverless Monitoring](#datadog-serverless-monitoring)
+  - [BrowserStack Test Companion Cloud](#browserstack-test-companion-cloud)
   - [Lumigo](#lumigo)
   - [Thundra](#thundra)
   - [Dashbird](#dashbird)
@@ -28,26 +26,26 @@
 
 ## 🟦 SaaS / Hosted Platforms
 
-Commercial, cloud-hosted Serverless Test Automation Execution platforms. These are not open-source but are included as reference points for feature comparison.
-
-### BrowserStack Test Companion Cloud
-**Type:** Cloud-hosted AI test execution for large jobs
-BrowserStack Test Companion Cloud runs test automation tasks on a machine in the BrowserStack cloud rather than inside the developer's IDE. A cloud machine clones your GitHub repository, installs required tools, opens its own browser, and executes the task—splitting large jobs into parallel subtasks where possible. Results arrive as a pull request on your repository [citation:2]. **Important limitations:** It is in beta and available on request; works only in Visual Studio Code; requires a repository on github.com; and tests run on Chrome only [citation:2]. This is not a serverless-specific testing tool—it is a cloud execution environment for test automation that can be used for serverless-adjacent workflows.
+Commercial, cloud-hosted Serverless Test Automation Execution platforms. These are not open-source but are included as reference points for feature comparison (sorted by company valuation / market cap descending).
 
 ### Datadog Serverless Monitoring
-**Type:** Serverless observability with AWS Lambda and Step Functions
+**Company Valuation / Scale:** ~$63B–$68B Market Cap (~$4B+ ARR) | **Type:** Serverless observability with AWS Lambda and Step Functions
 Datadog Serverless Monitoring collects real-time metrics, logs, and traces from AWS Lambda, Azure App Service, Azure Container Apps, and Google Cloud Run [citation:7]. For AWS Lambda, enhanced metrics (`aws.lambda.enhanced`) provide second-level granularity for cold starts, estimated costs, timeouts, out-of-memory errors, and memory usage. Distributed tracing connects serverless traces to metrics, and deployment tracking correlates code changes with performance impact [citation:7]. Step Functions integration provides execution tracing with state machine paths, step inputs/outputs, and execution durations [citation:7]. **Note:** This is monitoring rather than test execution—it helps diagnose failures in deployed serverless functions, not run tests against them.
 
+### BrowserStack Test Companion Cloud
+**Company Valuation / Scale:** ~$4B Valuation (~$225M ARR) | **Type:** Cloud-hosted AI test execution for large jobs
+BrowserStack Test Companion Cloud runs test automation tasks on a machine in the BrowserStack cloud rather than inside the developer's IDE. A cloud machine clones your GitHub repository, installs required tools, opens its own browser, and executes the task—splitting large jobs into parallel subtasks where possible. Results arrive as a pull request on your repository [citation:2]. **Important limitations:** It is in beta and available on request; works only in Visual Studio Code; requires a repository on github.com; and tests run on Chrome only [citation:2]. This is not a serverless-specific testing tool—it is a cloud execution environment for test automation that can be used for serverless-adjacent workflows.
+
 ### Lumigo
-**Type:** Serverless observability with AI-powered troubleshooting
+**Company Valuation / Scale:** ~$100M–$250M Valuation (Acquired by Dash0, $37M raised) | **Type:** Serverless observability with AI-powered troubleshooting
 Lumigo provides full visibility into serverless stacks—traces, logs, metrics, and payloads—with auto-instrumentation for Lambda across Node.js, Python, Java, Go, and .NET [citation:8]. Key features include end-to-end distributed tracing, payload inspection, cold start tracking, asynchronous workflow tracing (SQS, SNS, Step Functions), and AI-powered troubleshooting via Lumigo Copilot [citation:8]. Deployment uses a CloudFormation template to provision permissions. **Note:** Like Datadog, this is observability rather than test execution, but it is commonly used to validate serverless behavior post-deployment.
 
 ### Thundra
-**Type:** Serverless observability with LocalStack integration
-Thundra (now part of Tricentis) provides monitoring and debugging for AWS Lambda functions, with support for Node.js, Python, and Java runtimes [citation:9]. A notable integration is with **LocalStack**, allowing developers to monitor and debug Lambda functions locally before deploying to AWS. You obtain a Thundra API key and add it to the Lambda function's environment variables (`THUNDRA_APIKEY`), then inspect invocations and traces in the Thundra Console [citation:9]. This LocalStack integration is particularly relevant for serverless test automation workflows where local testing is desired.
+**Company Valuation / Scale:** ~$15M–$30M Est. Valuation / Acquisition by Catchpoint ($4M+ raised) | **Type:** Serverless observability with LocalStack integration
+Thundra (acquired by Catchpoint) provides monitoring and debugging for AWS Lambda functions, with support for Node.js, Python, and Java runtimes [citation:9]. A notable integration is with **LocalStack**, allowing developers to monitor and debug Lambda functions locally before deploying to AWS. You obtain a Thundra API key and add it to the Lambda function's environment variables (`THUNDRA_APIKEY`), then inspect invocations and traces in the Thundra Console [citation:9]. This LocalStack integration is particularly relevant for serverless test automation workflows where local testing is desired.
 
 ### Dashbird
-**Type:** Agentless serverless observability
+**Company Valuation / Scale:** ~$5M–$15M Est. Valuation ($2.9M raised) | **Type:** Agentless serverless observability
 Dashbird provides agentless serverless observability and monitoring for AWS environments, with error detection, incident management, and cost optimization insights without code-level instrumentation [citation:10]. It is designed to help DevOps teams identify issues and maintain availability for distributed serverless applications.
 
 ---
@@ -80,18 +78,18 @@ LocalStack is a cloud service emulator that runs AWS services locally in a singl
 
 ## 📊 Comparison at a Glance
 
-| Software | License | Stack | Runtime Target | Execution vs Observability | Self-Hosted | Best For |
-|----------|---------|-------|----------------|---------------------------|-------------|----------|
-| **BrowserStack Test Companion** | Proprietary | VS Code / Cloud | General test automation | Execution (cloud) | ❌ | Large AI-assisted test jobs |
-| **Datadog Serverless** | Proprietary | Cloud | AWS Lambda, Azure, GCP | Observability | ❌ | Post-deployment diagnostics |
-| **Lumigo** | Proprietary | Cloud | AWS Lambda | Observability | ❌ | Serverless troubleshooting + AI |
-| **Thundra** | Proprietary | Cloud | AWS Lambda (LocalStack) | Observability | ❌ | Local Lambda debugging |
-| **Dashbird** | Proprietary | Cloud | AWS serverless | Observability | ❌ | Agentless monitoring |
-| **Workers Vitest** | Open Source | TypeScript | Cloudflare Workers | Execution (unit) | ✅ | Fast unit tests in Workers runtime |
-| **createTestHarness** | Open Source | TypeScript | Cloudflare Workers | Execution (integration) | ✅ | Integration tests across Workers |
-| **aws-testing-framework** | MIT | TypeScript | AWS serverless | Execution (BDD) | ✅ | Real Lambda execution verification |
-| **samstack** | Open Source | Python | AWS (local via SAM) | Execution (local) | ✅ | Python local serverless testing |
-| **LocalStack** | Apache-2.0 | Python/Docker | AWS emulation | Emulation | ✅ | Offline AWS service testing |
+| Software | License | Company Scale (Valuation / Revenue) | Stack | Runtime Target | Execution vs Observability | Self-Hosted | Best For |
+|----------|---------|-------------------------------------|-------|----------------|---------------------------|-------------|----------|
+| **Datadog Serverless** | Proprietary | ~$63B–$68B Market Cap (~$4B+ ARR) | Cloud | AWS Lambda, Azure, GCP | Observability | ❌ | Post-deployment diagnostics |
+| **BrowserStack Test Companion** | Proprietary | ~$4B Valuation (~$225M ARR) | VS Code / Cloud | General test automation | Execution (cloud) | ❌ | Large AI-assisted test jobs |
+| **Lumigo** | Proprietary | ~$100M–$250M Valuation ($37M raised) | Cloud | AWS Lambda | Observability | ❌ | Serverless troubleshooting + AI |
+| **Thundra** | Proprietary | ~$15M–$30M Est. Valuation ($4M raised) | Cloud | AWS Lambda (LocalStack) | Observability | ❌ | Local Lambda debugging |
+| **Dashbird** | Proprietary | ~$5M–$15M Est. Valuation ($2.9M raised) | Cloud | AWS serverless | Observability | ❌ | Agentless monitoring |
+| **Workers Vitest** | Open Source | N/A (Cloudflare backing) | TypeScript | Cloudflare Workers | Execution (unit) | ✅ | Fast unit tests in Workers runtime |
+| **createTestHarness** | Open Source | N/A (Cloudflare backing) | TypeScript | Cloudflare Workers | Execution (integration) | ✅ | Integration tests across Workers |
+| **aws-testing-framework** | MIT | N/A (Open Source) | TypeScript | AWS serverless | Execution (BDD) | ✅ | Real Lambda execution verification |
+| **samstack** | Open Source | N/A (Open Source) | Python | AWS (local via SAM) | Execution (local) | ✅ | Python local serverless testing |
+| **LocalStack** | Apache-2.0 | ~$25M Series A ($30M+ raised) | Python/Docker | AWS emulation | Emulation | ✅ | Offline AWS service testing |
 
 ---
 
