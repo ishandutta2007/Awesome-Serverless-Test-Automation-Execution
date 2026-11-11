@@ -1,115 +1,173 @@
-# Awesome Serverless Test Automation Execution
+# ⚡ Awesome Serverless Test Automation Execution
 
-> A curated list of top Serverless Test Automation Execution platforms — both SaaS/Hosted commercial solutions and open-source alternatives for testing serverless functions, edge runtimes, and event-driven architectures.
-> 🌟 Star this repo if you find it useful! 🌟
+<p align="center">
+  <img src="assets/banner.svg" alt="Awesome Serverless Test Automation Execution Banner" width="100%" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a>
+  <a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Serverless-Test-Automation-Execution/stargazers"><img src="https://img.shields.io/github/stars/ishandutta2007/Awesome-Serverless-Test-Automation-Execution?style=flat-square&color=gold" alt="GitHub Stars" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Serverless-Test-Automation-Execution/network/members"><img src="https://img.shields.io/github/forks/ishandutta2007/Awesome-Serverless-Test-Automation-Execution?style=flat-square&color=blue" alt="GitHub Forks" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Serverless-Test-Automation-Execution/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg?style=flat-square" alt="License: CC0 1.0" /></a>
+  <a href="https://github.com/ishandutta2007"><img alt="GitHub followers" src="https://img.shields.io/github/followers/ishandutta2007?label=Follow" /></a>
+</p>
+
+> 🚀 **A curated directory of top Serverless Test Automation Execution platforms, testing frameworks, cloud emulators, and serverless observability suites.** Designed for developers building on AWS Lambda, Cloudflare Workers, Azure Functions, Google Cloud Run, and event-driven architectures.
+> 🌟 *Star this repository to bookmark the latest serverless quality engineering tools!* 🌟
 
 ---
 
 ## 📋 Table of Contents
 
-- [SaaS / Hosted Platforms](#-saas--hosted-platforms)
-  - [Datadog Serverless Monitoring](#datadog-serverless-monitoring)
-  - [BrowserStack Test Companion Cloud](#browserstack-test-companion-cloud)
-  - [Lumigo](#lumigo)
-  - [Thundra](#thundra)
-  - [Dashbird](#dashbird)
-- [Open-Source Software](#-open-source-software)
-  - [Cloudflare Workers Vitest Integration](#cloudflare-workers-vitest-integration)
-  - [Cloudflare createTestHarness](#cloudflare-createtestharness)
-  - [aws-testing-framework](#aws-testing-framework)
-  - [samstack](#samstack)
-  - [LocalStack](#localstack)
-- [Comparison at a Glance](#-comparison-at-a-glance)
-- [Contributing](#-contributing)
+- [🌐 Sector Overview & Market Dynamics](#-sector-overview--market-dynamics)
+- [🟦 SaaS / Hosted Platforms](#-saas--hosted-platforms)
+- [🟩 Open-Source Software](#-open-source-software)
+- [📊 Comparison at a Glance](#-comparison-at-a-glance)
+- [🤝 Contributing](#-contributing)
+- [💖 Support & Sponsorship](#-support--sponsorship)
+- [📈 Star History](#-star-history)
+- [📄 License](#-license)
+
+---
+
+## 🌐 Sector Overview & Market Dynamics
+
+The global serverless computing and continuous test automation market represents an estimated **$24B–$29B sector in 2026** (projected to exceed $50B+ by 2030 at a ~15% CAGR), driven by rapid enterprise adoption of Function-as-a-Service (FaaS) and edge computing. The market dynamics are **moderately fragmented**: while cloud-wide enterprise observability and infrastructure monitoring display high concentration around dominant incumbents (e.g., Datadog, Dynatrace), the specialized serverless test automation and local emulation layer remains decentralized and highly developer-driven, fostering thriving open-source ecosystems alongside focused point solutions.
 
 ---
 
 ## 🟦 SaaS / Hosted Platforms
 
-Commercial, cloud-hosted Serverless Test Automation Execution platforms. These are not open-source but are included as reference points for feature comparison (sorted by company valuation / market cap descending).
+Commercial, cloud-hosted Serverless Test Automation Execution and Observability platforms. Sorted descending by company valuation / market capitalization.
 
-### Datadog Serverless Monitoring
-**Company Valuation / Scale:** ~$63B–$68B Market Cap (~$4B+ ARR) | **Type:** Serverless observability with AWS Lambda and Step Functions
-Datadog Serverless Monitoring collects real-time metrics, logs, and traces from AWS Lambda, Azure App Service, Azure Container Apps, and Google Cloud Run [citation:7]. For AWS Lambda, enhanced metrics (`aws.lambda.enhanced`) provide second-level granularity for cold starts, estimated costs, timeouts, out-of-memory errors, and memory usage. Distributed tracing connects serverless traces to metrics, and deployment tracking correlates code changes with performance impact [citation:7]. Step Functions integration provides execution tracing with state machine paths, step inputs/outputs, and execution durations [citation:7]. **Note:** This is monitoring rather than test execution—it helps diagnose failures in deployed serverless functions, not run tests against them.
-
-### BrowserStack Test Companion Cloud
-**Company Valuation / Scale:** ~$4B Valuation (~$225M ARR) | **Type:** Cloud-hosted AI test execution for large jobs
-BrowserStack Test Companion Cloud runs test automation tasks on a machine in the BrowserStack cloud rather than inside the developer's IDE. A cloud machine clones your GitHub repository, installs required tools, opens its own browser, and executes the task—splitting large jobs into parallel subtasks where possible. Results arrive as a pull request on your repository [citation:2]. **Important limitations:** It is in beta and available on request; works only in Visual Studio Code; requires a repository on github.com; and tests run on Chrome only [citation:2]. This is not a serverless-specific testing tool—it is a cloud execution environment for test automation that can be used for serverless-adjacent workflows.
-
-### Lumigo
-**Company Valuation / Scale:** ~$100M–$250M Valuation (Acquired by Dash0, $37M raised) | **Type:** Serverless observability with AI-powered troubleshooting
-Lumigo provides full visibility into serverless stacks—traces, logs, metrics, and payloads—with auto-instrumentation for Lambda across Node.js, Python, Java, Go, and .NET [citation:8]. Key features include end-to-end distributed tracing, payload inspection, cold start tracking, asynchronous workflow tracing (SQS, SNS, Step Functions), and AI-powered troubleshooting via Lumigo Copilot [citation:8]. Deployment uses a CloudFormation template to provision permissions. **Note:** Like Datadog, this is observability rather than test execution, but it is commonly used to validate serverless behavior post-deployment.
-
-### Thundra
-**Company Valuation / Scale:** ~$15M–$30M Est. Valuation / Acquisition by Catchpoint ($4M+ raised) | **Type:** Serverless observability with LocalStack integration
-Thundra (acquired by Catchpoint) provides monitoring and debugging for AWS Lambda functions, with support for Node.js, Python, and Java runtimes [citation:9]. A notable integration is with **LocalStack**, allowing developers to monitor and debug Lambda functions locally before deploying to AWS. You obtain a Thundra API key and add it to the Lambda function's environment variables (`THUNDRA_APIKEY`), then inspect invocations and traces in the Thundra Console [citation:9]. This LocalStack integration is particularly relevant for serverless test automation workflows where local testing is desired.
-
-### Dashbird
-**Company Valuation / Scale:** ~$5M–$15M Est. Valuation ($2.9M raised) | **Type:** Agentless serverless observability
-Dashbird provides agentless serverless observability and monitoring for AWS environments, with error detection, incident management, and cost optimization insights without code-level instrumentation [citation:10]. It is designed to help DevOps teams identify issues and maintain availability for distributed serverless applications.
+| Product | Company Scale (Valuation / Revenue) | Pricing (Starting Tier) | Free Tier / Trial Limits | Core Focus & Runtime Target |
+|:---|:---|:---|:---|:---|
+| **[Datadog Serverless Monitoring](https://www.datadoghq.com/)** | ~$63B–$68B Market Cap (~$4B+ ARR) | **$5.00/month** per active function (Infra Pro) + **$10.00/million** traced invocations (APM) | **14-day free trial** with full access to APM, logs, and serverless metrics (no credit card required; downgrades to 5 hosts basic metric limit after trial) | Serverless observability, enhanced metrics, and distributed tracing for AWS Lambda, Azure App Service, and Cloud Run |
+| **[BrowserStack Test Companion Cloud](https://www.browserstack.com/)** | ~$4B Valuation (~$225M ARR) | **$99.00/month** (Desktop Automate, 1 parallel execution slot) | **Free Trial with 60–100 minutes** of automated cross-browser execution across up to 5 parallel sessions (max 1 hour per test run) | Cloud-hosted parallel test execution runner across real browser sandboxes via VS Code |
+| **[Lumigo](https://lumigo.io/)** | ~$100M–$250M Valuation ($37M raised, Acquired by Dash0) | **$99.00/month** (Standard Tier for higher volumes); **$0.00/month** (Free Basic Plan) | **Free forever plan** including up to **150,000 traces/month**, 5 GB logs/month, 5 GB metrics/month, and 14-day trace retention | Cloud-native serverless tracing and AI troubleshooting for AWS Lambda and microservices |
+| **[Thundra](https://www.catchpoint.com/)** | ~$15M–$30M Est. Valuation ($4M raised, Acquired by Catchpoint) | **$90.00/month** (Standard Tier covering 10M invocations; enterprise sales via Catchpoint) | **Free plan limit of 1,000,000 invocations/month** (2 GB data allowance, 7-day retention, unlimited team seats) | Serverless observability with deep LocalStack integration for offline & local Lambda debugging |
+| **[Dashbird](https://dashbird.io/)** | ~$5M–$15M Est. Valuation ($2.9M raised) | **$99.00/month** (Professional tier starting at 1M monthly invocations) | **14-day free trial** with full feature access and up to **5 GB data ingestion limit** (no credit card required) | Agentless AWS serverless observability, cost optimization, and automated error detection |
 
 ---
 
 ## 🟩 Open-Source Software
 
-Self-hosted, community-driven Serverless Test Automation Execution tools. The open-source ecosystem spans **runtime-native testing frameworks** for edge/serverless platforms and **local emulation tools** for AWS serverless services.
+Community-driven, self-hosted tools and test runners for serverless functions, local cloud emulation, and event-driven architectures. **Sorted descending by GitHub stars count.**
 
-### Cloudflare Workers Vitest Integration
-**Stack:** TypeScript / Vitest | **License:** Open Source (Cloudflare Workers SDK)
-Cloudflare provides a **Workers Vitest integration** for unit testing Workers functions, running tests inside the actual Workers runtime (`workerd`) so test code can access bindings and runtime APIs directly [citation:4]. It supports assertions against binding state (KV, R2, D1, Durable Objects) and direct calls to Durable Objects. This is the recommended path for fast feedback when testing individual Workers functions [citation:4]. **Important:** Miniflare, the local emulator underlying this, is not a hardened sandbox and should not be used to run untrusted code [citation:4].
+### 1. [LocalStack](https://github.com/localstack/localstack) [![GitHub stars](https://img.shields.io/github/stars/localstack/localstack?style=social&color=white)](https://github.com/localstack/localstack/stargazers)
+- **Repository:** [`localstack/localstack`](https://github.com/localstack/localstack)
+- **License:** Apache-2.0
+- **Stack:** Python / Docker
+- **Description:** A complete, local AWS cloud emulator running inside Docker. Enables full offline development, automated integration testing, and CI pipeline validation for AWS Lambda, S3, DynamoDB, SQS, SNS, and Step Functions without touching real cloud resources.
 
-### Cloudflare createTestHarness
-**Stack:** TypeScript / Wrangler | **License:** Open Source (Cloudflare Workers SDK)
-The **`createTestHarness()`** API provides integration testing for Cloudflare Workers, running production build output from Wrangler or the Cloudflare Vite plugin. It dispatches requests and events to one or more Workers, provides access to bindings and local storage, and captures logs and diagnostic output [citation:14]. It is compatible with any Node.js test runner and integrates with Playwright and MSW [citation:14]. This is the recommended path for integration tests that exercise Workers as a whole.
+### 2. [Serverless Framework](https://github.com/serverless/serverless) [![GitHub stars](https://img.shields.io/github/stars/serverless/serverless?style=social&color=white)](https://github.com/serverless/serverless/stargazers)
+- **Repository:** [`serverless/serverless`](https://github.com/serverless/serverless)
+- **License:** Serverless Public License / MIT (v3)
+- **Stack:** Node.js / TypeScript
+- **Description:** The industry-standard CLI framework to build, package, test, and deploy serverless applications across AWS Lambda, Cloudflare Workers, and Azure. Powers local test invocation via `serverless invoke local`.
 
-### aws-testing-framework
-**Stack:** TypeScript / Node.js / AWS SDK | **License:** MIT
-aws-testing-framework is an open-source BDD-style testing framework for AWS serverless applications, with a focus on **verifying actual Lambda execution** via CloudWatch logs rather than just checking deployment [citation:1]. It provides pre-built step definitions for S3, SQS, Lambda, and Step Functions, with examples like "the Lambda function should be invoked 3 times within 5 minutes" and "the Step Function execution should succeed" [citation:1]. It supports configurable timeouts, retry attempts, and environment-specific configuration (`createForDevelopment`, `createForProduction`). **Differentiator:** Real execution verification, not just resource existence checks [citation:1]. **Trade-off:** Focused on AWS serverless services; requires AWS credentials and resources to test against.
+### 3. [Cloudflare workerd](https://github.com/cloudflare/workerd) [![GitHub stars](https://img.shields.io/github/stars/cloudflare/workerd?style=social&color=white)](https://github.com/cloudflare/workerd/stargazers)
+- **Repository:** [`cloudflare/workerd`](https://github.com/cloudflare/workerd)
+- **License:** Apache-2.0
+- **Stack:** C++ / V8 / JavaScript
+- **Description:** The open-source JavaScript/Wasm runtime that powers Cloudflare Workers at the edge. Serves as the foundation for local test execution engines like Miniflare and the Workers Vitest test integration.
 
-### samstack
-**Stack:** Python / Docker / LocalStack | **License:** Open Source (PyPI)
-samstack is a Python testing utility for local AWS serverless development, combining **SAM CLI** and **LocalStack** in Docker containers to run integration tests against S3, DynamoDB, SQS, SNS, and Lambda [citation:3]. It provides Python fixtures that wrap these services with a simple API (`bucket.delete()`, `table.put_item()`, `queue.send()`) and automatically starts LocalStack and SAM local endpoints. Configuration is via `pyproject.toml` with options for ports, images, and pre-warming Lambda functions [citation:3]. **Trade-off:** Python-centric; requires Docker; focused on local testing rather than cloud execution.
+### 4. [Moto](https://github.com/getmoto/moto) [![GitHub stars](https://img.shields.io/github/stars/getmoto/moto?style=social&color=white)](https://github.com/getmoto/moto/stargazers)
+- **Repository:** [`getmoto/moto`](https://github.com/getmoto/moto)
+- **License:** Apache-2.0
+- **Stack:** Python
+- **Description:** An open-source mocking library for AWS infrastructure. Allows automated tests to simulate calls to AWS Lambda, DynamoDB, S3, and dozens of other cloud services in pure memory without spinning up Docker or real cloud infrastructure.
 
-### LocalStack
-**Stack:** Python / Docker | **License:** Apache-2.0 (Community)
-LocalStack is a cloud service emulator that runs AWS services locally in a single Docker container, enabling offline development and testing of serverless applications without connecting to AWS [citation:9]. It supports Lambda, S3, DynamoDB, SQS, SNS, Step Functions, and many other services. It is commonly used with frameworks like samstack and integrates with Thundra for local observability [citation:9]. **Trade-off:** It is an emulator, not a test runner—you still need a testing framework (pytest, Vitest, etc.) to write and execute tests against the emulated services.
+### 5. [AWS SAM CLI](https://github.com/aws/aws-sam-cli) [![GitHub stars](https://img.shields.io/github/stars/aws/aws-sam-cli?style=social&color=white)](https://github.com/aws/aws-sam-cli/stargazers)
+- **Repository:** [`aws/aws-sam-cli`](https://github.com/aws/aws-sam-cli)
+- **License:** Apache-2.0
+- **Stack:** Python / Docker
+- **Description:** The official AWS Serverless Application Model command-line interface. Features local test invocation (`sam local invoke`), local API gateway emulation (`sam local start-api`), and integration with LocalStack for offline test automation execution.
+
+### 6. [serverless-offline](https://github.com/dherault/serverless-offline) [![GitHub stars](https://img.shields.io/github/stars/dherault/serverless-offline?style=social&color=white)](https://github.com/dherault/serverless-offline/stargazers)
+- **Repository:** [`dherault/serverless-offline`](https://github.com/dherault/serverless-offline)
+- **License:** MIT
+- **Stack:** Node.js / JavaScript
+- **Description:** A popular Serverless Framework plugin that emulates AWS Lambda and API Gateway locally on your machine, enabling rapid automated integration testing and local HTTP request verification.
+
+### 7. [Cloudflare Workers SDK (Vitest & createTestHarness)](https://github.com/cloudflare/workers-sdk) [![GitHub stars](https://img.shields.io/github/stars/cloudflare/workers-sdk?style=social&color=white)](https://github.com/cloudflare/workers-sdk/stargazers)
+- **Repository:** [`cloudflare/workers-sdk`](https://github.com/cloudflare/workers-sdk)
+- **License:** Apache-2.0 / MIT
+- **Stack:** TypeScript / Wrangler
+- **Description:** Contains the official Workers Vitest test pool runner and the `createTestHarness()` API for executing isolated unit and end-to-end integration tests directly inside the `workerd` edge runtime environment.
+
+### 8. [AWS Serverless Test Samples](https://github.com/aws-samples/serverless-test-samples) [![GitHub stars](https://img.shields.io/github/stars/aws-samples/serverless-test-samples?style=social&color=white)](https://github.com/aws-samples/serverless-test-samples/stargazers)
+- **Repository:** [`aws-samples/serverless-test-samples`](https://github.com/aws-samples/serverless-test-samples)
+- **License:** MIT-0
+- **Stack:** Python / TypeScript / Java
+- **Description:** Official reference test automation architecture from AWS. Demonstrates enterprise patterns for unit testing, integration testing, and synthetic end-to-end test suites for event-driven serverless architectures.
+
+### 9. [aws-testing-framework](https://github.com/sophiegle/aws-testing-framework) [![GitHub stars](https://img.shields.io/github/stars/sophiegle/aws-testing-framework?style=social&color=white)](https://github.com/sophiegle/aws-testing-framework/stargazers)
+- **Repository:** [`sophiegle/aws-testing-framework`](https://github.com/sophiegle/aws-testing-framework)
+- **License:** MIT
+- **Stack:** TypeScript / Cucumber BDD
+- **Description:** Open-source BDD test framework for AWS serverless applications. Validates actual Lambda execution via CloudWatch metrics and log events rather than basic resource deployment checks.
 
 ---
 
 ## 📊 Comparison at a Glance
 
-| Software | License | Company Scale (Valuation / Revenue) | Stack | Runtime Target | Execution vs Observability | Self-Hosted | Best For |
-|----------|---------|-------------------------------------|-------|----------------|---------------------------|-------------|----------|
-| **Datadog Serverless** | Proprietary | ~$63B–$68B Market Cap (~$4B+ ARR) | Cloud | AWS Lambda, Azure, GCP | Observability | ❌ | Post-deployment diagnostics |
-| **BrowserStack Test Companion** | Proprietary | ~$4B Valuation (~$225M ARR) | VS Code / Cloud | General test automation | Execution (cloud) | ❌ | Large AI-assisted test jobs |
-| **Lumigo** | Proprietary | ~$100M–$250M Valuation ($37M raised) | Cloud | AWS Lambda | Observability | ❌ | Serverless troubleshooting + AI |
-| **Thundra** | Proprietary | ~$15M–$30M Est. Valuation ($4M raised) | Cloud | AWS Lambda (LocalStack) | Observability | ❌ | Local Lambda debugging |
-| **Dashbird** | Proprietary | ~$5M–$15M Est. Valuation ($2.9M raised) | Cloud | AWS serverless | Observability | ❌ | Agentless monitoring |
-| **Workers Vitest** | Open Source | N/A (Cloudflare backing) | TypeScript | Cloudflare Workers | Execution (unit) | ✅ | Fast unit tests in Workers runtime |
-| **createTestHarness** | Open Source | N/A (Cloudflare backing) | TypeScript | Cloudflare Workers | Execution (integration) | ✅ | Integration tests across Workers |
-| **aws-testing-framework** | MIT | N/A (Open Source) | TypeScript | AWS serverless | Execution (BDD) | ✅ | Real Lambda execution verification |
-| **samstack** | Open Source | N/A (Open Source) | Python | AWS (local via SAM) | Execution (local) | ✅ | Python local serverless testing |
-| **LocalStack** | Apache-2.0 | ~$25M Series A ($30M+ raised) | Python/Docker | AWS emulation | Emulation | ✅ | Offline AWS service testing |
+| Tool / Platform | License | Scale / Stargazers | Category | Runtime Target | Execution Type | Best For |
+|:---|:---|:---|:---|:---|:---|:---|
+| **LocalStack** | Apache-2.0 | [![Stars](https://img.shields.io/github/stars/localstack/localstack?style=social&color=white)](https://github.com/localstack/localstack/stargazers) | Open-Source Emulator | AWS Ecosystem | Local Emulation | Complete offline AWS environment testing |
+| **Serverless Framework** | Source / MIT | [![Stars](https://img.shields.io/github/stars/serverless/serverless?style=social&color=white)](https://github.com/serverless/serverless/stargazers) | Open-Source CLI | AWS, GCP, Cloudflare | Local / Cloud Execution | Deploying and invoking functions locally |
+| **Cloudflare workerd** | Apache-2.0 | [![Stars](https://img.shields.io/github/stars/cloudflare/workerd?style=social&color=white)](https://github.com/cloudflare/workerd/stargazers) | Open-Source Runtime | Cloudflare Workers | Native Runtime Exec | Edge runtime emulation & testing |
+| **Moto** | Apache-2.0 | [![Stars](https://img.shields.io/github/stars/getmoto/moto?style=social&color=white)](https://github.com/getmoto/moto/stargazers) | Open-Source Mocking | AWS Lambda & Services | In-Memory Mocking | Fast Python unit testing with mocked AWS |
+| **AWS SAM CLI** | Apache-2.0 | [![Stars](https://img.shields.io/github/stars/aws/aws-sam-cli?style=social&color=white)](https://github.com/aws/aws-sam-cli/stargazers) | Open-Source CLI | AWS Lambda & API Gateway | Local Container Exec | Native SAM template testing and API emulation |
+| **serverless-offline** | MIT | [![Stars](https://img.shields.io/github/stars/dherault/serverless-offline?style=social&color=white)](https://github.com/dherault/serverless-offline/stargazers) | Open-Source Plugin | AWS Lambda / HTTP | Local Server Emulation | Local Node.js API simulation |
+| **Cloudflare Workers SDK** | Apache-2.0 | [![Stars](https://img.shields.io/github/stars/cloudflare/workers-sdk?style=social&color=white)](https://github.com/cloudflare/workers-sdk/stargazers) | Open-Source SDK | Cloudflare Workers | Vitest / Runtime Exec | Edge function unit & integration testing |
+| **Datadog Serverless** | Proprietary | ~$63B–$68B Market Cap | Commercial SaaS | AWS, Azure, GCP | Observability & Tracing | Enterprise production serverless diagnostics |
+| **BrowserStack Companion** | Proprietary | ~$4B Valuation | Commercial SaaS | Web & Cloud Sandboxes | Cloud Execution | AI-assisted parallel browser testing |
+| **Lumigo** | Proprietary | ~$100M–$250M Valuation | Commercial SaaS | AWS Lambda & Microservices | Observability & AI Tracing | Distributed trace inspection & debugging |
+| **AWS Serverless Samples** | MIT-0 | [![Stars](https://img.shields.io/github/stars/aws-samples/serverless-test-samples?style=social&color=white)](https://github.com/aws-samples/serverless-test-samples/stargazers) | Reference Suite | AWS Lambda & EventBridge | Best-Practice Suite | Reference integration & E2E blueprints |
+| **Thundra** | Proprietary | ~$15M–$30M Valuation | Commercial SaaS | AWS Lambda / LocalStack | Observability & Debugging | LocalStack Lambda trace monitoring |
+| **Dashbird** | Proprietary | ~$5M–$15M Valuation | Commercial SaaS | AWS Serverless | Observability & Auditing | Agentless serverless error & cost detection |
+| **aws-testing-framework** | MIT | [![Stars](https://img.shields.io/github/stars/sophiegle/aws-testing-framework?style=social&color=white)](https://github.com/sophiegle/aws-testing-framework/stargazers) | Open-Source Framework | AWS Lambda & Step Functions | BDD Execution | Log-verified BDD assertions on AWS |
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! If you know of an open-source Serverless Test Automation Execution tool that should be listed here, please open a pull request with:
+Contributions are always warmly welcomed! 🌟 To add an open-source tool, testing harness, or serverless execution framework to this repository:
 
-- Project name and URL
-- Brief description (1–2 sentences)
-- Stack and license
-- Why it stands out
+1. 🍴 **Fork** this repository.
+2. 🌿 **Create a new branch**: `git checkout -b add-my-serverless-tool`.
+3. 📝 **Add your project** in the appropriate section with its name, GitHub repository link, license, and brief description.
+4. 🚀 **Commit and push** your changes.
+5. 📬 **Submit a Pull Request** explaining what makes the tool uniquely suited for serverless test automation execution.
 
-Please ensure the project is actively maintained (releases within the last 12 months) and genuinely open-source. Note that the open-source ecosystem **splits** between **runtime-native testing frameworks** (Cloudflare Workers Vitest, createTestHarness) that execute tests inside the serverless runtime, **AWS-specific test harnesses** (aws-testing-framework, samstack) that verify execution against real or emulated services, and **local emulators** (LocalStack) that provide the foundation for offline testing. Commercial platforms (Datadog, Lumigo, Thundra, Dashbird) are primarily **observability** tools rather than test execution engines—they help diagnose failures in deployed serverless functions but do not run tests. BrowserStack Test Companion Cloud is an execution environment for general test automation, not a serverless-specific tool [citation:2].
+---
+
+## 💖 Support & Sponsorship
+
+If you find this curated ecosystem list helpful for your serverless testing workflows, please consider supporting the project:
+
+- ⭐ **Star this repository** to help others discover it!
+- 🍴 **Fork and share** it with your developer community.
+- ☕ **Buy me a coffee & support my open-source work**: Sponsor the creator via the [GitHub Sponsors Dashboard](https://github.com/sponsors/ishandutta2007).
+
+Thank you for being part of the open-source community! 🙌
+
+---
+
+## 📈 Star History
+
+[![Star History Chart](https://www.star-history.com/svg?repos=ishandutta2007/Awesome-Serverless-Test-Automation-Execution&type=date&legend=top-left)](https://www.star-history.com/#ishandutta2007/Awesome-Serverless-Test-Automation-Execution&type=date&legend=top-left)
 
 ---
 
 ## 📄 License
 
-This list is released under CC0 1.0 Universal (Public Domain). The software projects listed retain their respective licenses.
+This compilation is licensed under the [Creative Commons Zero v1.0 Universal](LICENSE) (CC0 1.0 - Public Domain). Individual projects and platforms listed herein retain their respective licenses and trademarks.
 
 ---
 
-⭐ **If this list helped you discover a useful tool, please star the repo!** ⭐
+<p align="center">
+  <sub>Curated with ❤️ by <a href="https://github.com/ishandutta2007">Ishan Dutta</a> and the global serverless community.</sub>
+</p>
